@@ -106,6 +106,7 @@ abstract class AbstractRegistrationProcessor extends AbstractProcessor {
         ProcessorContext.enter(processingEnv);
         try {
             if (roundEnv.processingOver()) {
+                if (roundEnv.errorRaised()) return true;
                 generateServicesRegistration(registrations);
                 generateLegacyRegistration(legacyRegistrations);
                 registrations.clear();
